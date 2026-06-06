@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NEXUS ENGINE 3D // EDITOR VISUAL</title>
+    <style>
+        body { margin: 0; padding: 0; background: #1a1a1a; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
+        #editor-container { display: flex; width: 100vw; height: 100vh; }
+        #sidebar { width: 300px; background: #262626; padding: 20px; border-right: 2px solid #333; display: flex; flex-direction: column; gap: 15px; }
+        #viewport { flex-grow: 1; position: relative; background: #000; }
+        canvas { width: 100%; height: 100%; display: block; }
+        h2 { margin-top: 0; color: #00ffcc; font-size: 1.2rem; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        .btn { background: #00ffcc; color: #000; border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .btn:hover { background: #00ccaa; }
+        .control-group { display: flex; flex-direction: column; gap: 5px; }
+        label { font-size: 0.85rem; color: #aaa; }
+        input[type="range"] { width: 100%; }
+        #stats { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8rem; pointer-events: none; border: 1px solid #00ffcc; }
+    </style>
+</head>
+<body>
+
+    <div id-="editor-container">
+        <div id="sidebar">
+            <h2>NEXUS CORE v2.0</h2>
+            
+            <div class="control-group">
+                <button class="btn" id="spawn-cube">Spawnear Cubo 3D</button>
+            </div>
+
+            <div class="control-group">
+                <button class="btn" id="play-sound" style="background: #ff0055; color: white;">Testear Módulo Sonido</button>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #444; width: 100%;">
+
+            <div class="control-group">
+                <label id="gravity-label">Gravedad del Mundo: -9.8 m/s²</label>
+                <input type="range" id="gravity-slider" min="0" max="30" value="10" step="1">
+            </div>
+
+            <div class="control-group">
+                <label id="bounce-label">Restitución (Rebote): 0.7</label>
+                <input type="range" id="bounce-slider" min="0" max="100" value="70">
+            </div>
+        </div>
+
+        <div id="viewport">
+            <div id="stats">
+                Carga del Motor: OK<br>
+                Render API: WebGL 3D Contiguo<br>
+                Entidades activas: <span id="entity-count">0</span>
+            </div>
+            <canvas id="renderCanvas"></canvas>
+        </div>
+    </div>
+
+    <script src="nexus_engine.js"></script>
+</body>
+</html>
